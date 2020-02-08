@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import generateId from '../utils/generateId';
+
 export default {
   name: "NewToDoItem",
   props: {
@@ -21,7 +23,11 @@ export default {
   methods: {
     addTodo: function() {
       if (this.newTodo) {
-        this.onAddTodo(this.newTodo);
+        this.onAddTodo({
+          id: generateId(),
+          note: this.newTodo,
+          complete: false
+        });
         this.newTodo = "";
       }
     }
@@ -37,5 +43,12 @@ input {
   padding: 10px;
   border: thin solid #cccccc;
   margin-bottom: -1px;
+  outline: 0;
+  position: relative;
+  
+  &:focus {
+    z-index: 999;
+    box-shadow: 0px 0px 0 2px #2196F3;
+  }
 }
 </style>

@@ -1,17 +1,41 @@
 <template>
   <div class="todo-list">
     <ul>
-      <li v-for="(item, index) in items" :key="`item-${index}`">{{ item }}</li>
+      <TodoListItem
+        v-for="todo in todos"
+        :key="todo.id"
+        :todo="todo"
+        :onDelete="deleteTodo"
+        :onUpdate="updateTodo"
+      />
     </ul>
   </div>
 </template>
 
 <script>
+import TodoListItem from "./TodoListItem";
+
 export default {
   name: "TodoList",
   props: {
     msg: String,
-    items: Array
+    todos: Array,
+    onUpdateTodos: Function
+  },
+  components: {
+    TodoListItem
+  },
+  methods: {
+    deleteTodo: function(id) {
+      const todos = this.todos.filter(todo => todo.id !== id);
+      this.onUpdateTodos(todos);
+    },
+    updateTodo: function(updatedTodo) {
+      const todos = this.todos.map(todo =>
+        todo.id === updatedTodo.id ? updatedTodo : todo
+      );
+      this.onUpdateTodos(todos);
+    }
   }
 };
 </script>
@@ -26,12 +50,10 @@ ul {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-}
-li {
-  display: inline-block;
-  padding: 10px;
-  width: 100%;
-  text-align: left;
+
+  &:empty {
+    display: none;
+  }
 }
 a {
   color: #42b983;

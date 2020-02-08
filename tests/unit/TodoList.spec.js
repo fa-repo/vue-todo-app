@@ -6,18 +6,16 @@ describe("TodoList", () => {
     expect(mount(TodoList).isVueInstance()).toBe(true);
   });
 
-  test.only("Renders TODO list", () => {
-    const propsData = { items: ["a", "b", "c"] };
+  it("Renders TODO list", () => {
+    const propsData = {
+      todos: [
+        { id: "szq86umfc", note: "item 1", complete: true },
+        { id: "b8jj7karu", note: "item 2", complete: false },
+        { id: "0wzn59w1p", note: "item 3", complete: true }
+      ]
+    };
     const wrapper = mount(TodoList, { propsData });
 
     expect(wrapper.findAll(".todo-list li").length).toBe(3);
   });
-
-  test.todo("Renders TODO item");
-
-  test.todo("Can add item to TODO list");
-
-  test.todo("Can update item in TODO list");
-
-  test.todo("Can delete item in TODO list");
 });

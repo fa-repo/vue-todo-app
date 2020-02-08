@@ -4,7 +4,7 @@
       <img alt="To-Do logo" src="./assets/todo-icon.png" /> Vue Todo App
     </h1>
     <NewTodo :onAddTodo="addTodo" />
-    <TodoList :items="todos" />
+    <TodoList :todos="todos" :onUpdateTodos="updateTodos" />
   </div>
 </template>
 
@@ -20,13 +20,20 @@ export default {
   },
   data() {
     return {
-      todos: ["item 1", "item 2", "item 3", "item 4"]
+      todos: [
+        { id: "szq86umfc", note: "item 1", complete: true },
+        { id: "b8jj7karu", note: "item 2", complete: false },
+        { id: "0wzn59w1p", note: "item 3", complete: true },
+        { id: "xgyta47yc", note: "item 4", complete: false }
+      ]
     };
   },
   methods: {
     addTodo: function(item) {
-      this.todos.push(item);
-      console.log(item);
+      this.todos.unshift(item);
+    },
+    updateTodos: function(todos) {
+      this.todos = todos;
     }
   }
 };

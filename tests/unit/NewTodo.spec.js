@@ -7,7 +7,7 @@ describe("NewTodo", () => {
     expect(mount(NewTodo).vm.newTodo).toBe("");
   });
 
-  test("Can submit Todo", async () => {
+  it("Can submit Todo", async () => {
     const propsData = {
       onAddTodo: jest.fn()
     };
@@ -17,10 +17,12 @@ describe("NewTodo", () => {
     input.trigger("keyup.enter");
 
     expect(input.vm.onAddTodo).toHaveBeenCalledTimes(1);
-    expect(input.vm.onAddTodo.mock.calls[0][0]).toBe("some input");
+    expect(input.vm.onAddTodo.mock.calls[0][0].note).toBe("some input");
+    expect(input.vm.onAddTodo.mock.calls[0][0].id.length).toBe(9);
+    expect(input.vm.onAddTodo.mock.calls[0][0].complete).toBe(false);
   });
 
-  it("Doesn't submit empty Todo", () => {
+  it("can't submit empty Todo", () => {
     const propsData = {
       onAddTodo: jest.fn()
     };

@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoListItem Calls onUpdate after editing note 1`] = `
+<li
+  class="todo-item is-complete"
+>
+  <input
+    class="toggle"
+    type="checkbox"
+  />
+   
+  <input
+    class="note"
+    type="text"
+  />
+   
+  <button
+    class="delete"
+  >
+    ❌
+  </button>
+</li>
+`;
+
+exports[`TodoListItem Renders properly 1`] = `
+<li
+  class="todo-item is-complete"
+>
+  <input
+    class="completed"
+    type="checkbox"
+  />
+   
+  <input
+    class="note"
+    type="text"
+  />
+   
+  <button
+    class="delete"
+  >
+    ❌
+  </button>
+</li>
+`;
