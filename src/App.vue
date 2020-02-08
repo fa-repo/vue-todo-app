@@ -1,17 +1,34 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1 id="heading">
+      <img alt="To-Do logo" src="./assets/todo-icon.png" /> Vue Todo App
+    </h1>
+    <NewItem :onAddItem="addItem" />
+    <List :items="todos" />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import List from "./components/List.vue";
+import NewItem from "./components/NewItem.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
+    List,
+    NewItem
+  },
+  data() {
+    return {
+      todos: ["item 1", "item 2", "item 3", "item 4"],
+      newItem: ""
+    };
+  },
+  methods: {
+    addItem: function(item) {
+      this.todos.push(item);
+      console.log(item);
+    }
   }
 };
 </script>
@@ -24,5 +41,17 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+#heading {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+#heading img {
+  height: 40px;
+  margin-right: 15px;
 }
 </style>
