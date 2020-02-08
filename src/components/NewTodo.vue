@@ -1,22 +1,22 @@
 <template>
-  <input v-model="newItem" autofocus @keyup.enter="addItem" />
+  <input v-model="newTodo" autofocus @keyup.enter="addTodo" />
 </template>
 
 <script>
 export default {
   name: "NewToDoItem",
   props: {
-    onAddItem: Function
+    onAddTodo: Function
   },
   data() {
     return {
-      newItem: ""
+      newTodo: ""
     };
   },
   methods: {
-    addItem: function() {
-      this.onAddItem(this.newItem);
-      this.newItem = "";
+    addTodo: function() {
+      this.onAddTodo(this.newTodo);
+      this.newTodo = "";
     }
   }
 };

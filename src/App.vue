@@ -3,29 +3,28 @@
     <h1 id="heading">
       <img alt="To-Do logo" src="./assets/todo-icon.png" /> Vue Todo App
     </h1>
-    <NewItem :onAddItem="addItem" />
-    <List :items="todos" />
+    <NewTodo :onAddTodo="addTodo" />
+    <TodoList :items="todos" />
   </div>
 </template>
 
 <script>
-import List from "./components/List.vue";
-import NewItem from "./components/NewItem.vue";
+import TodoList from "./components/TodoList.vue";
+import NewTodo from "./components/NewTodo.vue";
 
 export default {
   name: "App",
   components: {
-    List,
-    NewItem
+    TodoList,
+    NewTodo
   },
   data() {
     return {
-      todos: ["item 1", "item 2", "item 3", "item 4"],
-      newItem: ""
+      todos: ["item 1", "item 2", "item 3", "item 4"]
     };
   },
   methods: {
-    addItem: function(item) {
+    addTodo: function(item) {
       this.todos.push(item);
       console.log(item);
     }
@@ -34,6 +33,15 @@ export default {
 </script>
 
 <style lang="scss">
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

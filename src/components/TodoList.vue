@@ -21,10 +21,17 @@ export default {
 ul {
   list-style-type: none;
   padding: 0;
+  border: thin solid rgba(0,0,0,0.2);
+  width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 li {
   display: inline-block;
-  margin: 0 10px;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
 }
 a {
   color: #42b983;
